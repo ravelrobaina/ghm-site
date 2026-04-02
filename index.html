@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GHM Comércio e Serviços LTDA — Ferramentaria, Usinagem CNC e Automação Industrial em São José dos Campos. Fornecedor da Embraer, Saint-Gobain e outras líderes industriais.">
+<title>GHM Comércio e Serviços | Ferramentaria Industrial — São José dos Campos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=DM+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal-dark: #0A3D35;
+    --teal-mid: #0D5246;
+    --teal-light: #0E6B5A;
+    --green-accent: #6DC94E;
+    --green-dark: #4EA336;
+    --bg-black: #080F0E;
+    --bg-dark: #0C1614;
+    --bg-card: #111E1B;
+    --bg-card2: #162320;
+    --text-white: #F0F5F3;
+    --text-muted: #7A9990;
+    --text-mono: #5DBFA0;
+    --border: rgba(109,201,78,0.15);
+    --border-teal: rgba(13,82,70,0.6);
+    --ff-display: 'Bebas Neue', sans-serif;
+    --ff-cond: 'Barlow Condensed', sans-serif;
+    --ff-body: 'DM Sans', sans-serif;
+    --ff-mono: 'IBM Plex Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--ff-body);
+    background: var(--bg-black);
+    color: var(--text-white);
+    overflow-x: hidden;
+  }
+
+  /* ── GRAIN OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    background: rgba(8,15,14,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-teal);
+    padding: 0 5%;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-logo {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .nav-logo-main {
+    font-family: var(--ff-display);
+    font-size: 2rem;
+    color: var(--green-accent);
+    letter-spacing: 0.05em;
+  }
+  .nav-logo-sub {
+    font-family: var(--ff-mono);
+    font-size: 0.5rem;
+    color: var(--text-muted);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--ff-cond);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green-accent); }
+  .nav-cta {
+    background: var(--green-accent);
+    color: #0A2A1A !important;
+    padding: 0.5rem 1.2rem;
+    border-radius: 4px;
+    font-weight: 600 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--green-dark) !important; color: #fff !important; }
+  .nav-phone {
+    font-family: var(--ff-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  /* hamburger */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-white);
+    transition: 0.3s;
+  }
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 68px; left: 0; right: 0;
+    background: var(--bg-dark);
+    border-bottom: 1px solid var(--border-teal);
+    padding: 1.5rem 5%;
+    z-index: 999;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    font-family: var(--ff-cond);
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .mobile-menu a:hover { color: var(--green-accent); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    padding: 68px 5% 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-hexbg {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='104'%3E%3Cpolygon points='60,2 118,32 118,72 60,102 2,72 2,32' fill='none' stroke='%236DC94E' stroke-width='1'/%3E%3C/svg%3E");
+    background-size: 120px 104px;
+  }
+  .hero-hex-deco {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.06;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--ff-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(109,201,78,0.3);
+    padding: 0.35rem 0.8rem;
+    border-radius: 2px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--green-accent);
+    border-radius: 50%;
+    animation: blink 1.5s infinite;
+  }
+  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+  h1.hero-title {
+    font-family: var(--ff-display);
+    font-size: clamp(3.5rem, 9vw, 8rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--text-white);
+    margin-bottom: 0.3rem;
+  }
+  h1.hero-title span { color: var(--green-accent); }
+  .hero-sub {
+    font-family: var(--ff-cond);
+    font-size: clamp(1rem, 2vw, 1.4rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    line-height: 1.4;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+  .btn-primary {
+    background: var(--green-accent);
+    color: #0A2A1A;
+    font-family: var(--ff-cond);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--text-white);
+    font-family: var(--ff-cond);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 0.9rem 2rem;
+    border: 1px solid rgba(240,245,243,0.3);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--green-accent); color: var(--green-accent); }
+
+  /* trust marquee */
+  .trust-bar {
+    border-top: 1px solid var(--border-teal);
+    padding: 1rem 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .trust-bar::before, .trust-bar::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 80px;
+    z-index: 2;
+  }
+  .trust-bar::before { left: 0; background: linear-gradient(to right, var(--bg-black), transparent); }
+  .trust-bar::after { right: 0; background: linear-gradient(to left, var(--bg-black), transparent); }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    animation: marquee 28s linear infinite;
+    width: max-content;
+  }
+  .marquee-track:hover { animation-play-state: paused; }
+  @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .trust-item {
+    font-family: var(--ff-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .trust-item.highlight { color: var(--green-accent); }
+  .trust-sep { color: var(--border); }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 6rem 5%; }
+  .section-label {
+    font-family: var(--ff-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .section-label::after {
+    content: '';
+    display: block;
+    height: 1px;
+    width: 40px;
+    background: var(--green-accent);
+    opacity: 0.5;
+  }
+  h2.section-title {
+    font-family: var(--ff-display);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 0.95;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+  }
+  h2.section-title span { color: var(--green-accent); }
+
+  /* ── SOBRE ── */
+  #sobre { background: var(--bg-dark); }
+  .sobre-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 4rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+  .stats-col { display: flex; flex-direction: column; gap: 2rem; }
+  .stat-block {
+    border-left: 3px solid var(--green-accent);
+    padding-left: 1.5rem;
+  }
+  .stat-number {
+    font-family: var(--ff-display);
+    font-size: clamp(3rem, 6vw, 5rem);
+    color: var(--green-accent);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--ff-cond);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 0.3rem;
+  }
+  .sobre-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(240,245,243,0.8);
+    margin-bottom: 1.2rem;
+  }
+  .sobre-text p strong { color: var(--green-accent); font-weight: 500; }
+  .fundada-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--ff-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    border: 1px solid var(--border-teal);
+    padding: 0.4rem 0.8rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  /* ── SERVIÇOS ── */
+  #servicos { background: var(--bg-black); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    margin-top: 3rem;
+    border: 1px solid var(--border-teal);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .service-card {
+    background: var(--bg-card);
+    padding: 2rem 1.8rem;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--green-accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.25s ease;
+  }
+  .service-card:hover { background: var(--bg-card2); }
+  .service-card:hover::before { transform: scaleY(1); }
+  .service-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 1.2rem;
+    opacity: 0.8;
+  }
+  .service-name {
+    font-family: var(--ff-cond);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-white);
+    margin-bottom: 0.6rem;
+  }
+  .service-desc {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-muted);
+  }
+
+  /* ── EQUIPAMENTOS ── */
+  #equipamentos { background: var(--bg-dark); position: relative; overflow: hidden; }
+  .equip-deco {
+    position: absolute;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--ff-display);
+    font-size: 20rem;
+    color: rgba(13,82,70,0.07);
+    line-height: 1;
+    user-select: none;
+    pointer-events: none;
+  }
+  .equip-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+  .equip-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-teal);
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+  }
+  .equip-dot {
+    width: 6px; height: 6px;
+    background: var(--green-accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .equip-name {
+    font-family: var(--ff-mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+  }
+  .equip-name strong {
+    display: block;
+    color: var(--text-white);
+    font-size: 0.85rem;
+    margin-bottom: 0.15rem;
+  }
+
+  /* ── CLIENTES ── */
+  #clientes {
+    background: var(--teal-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  #clientes::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='69'%3E%3Cpolygon points='40,2 78,22 78,47 40,67 2,47 2,22' fill='none' stroke='%230E6B5A' stroke-width='0.8'/%3E%3C/svg%3E");
+    background-size: 80px 69px;
+    opacity: 0.2;
+  }
+  .clientes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+  .cliente-badge {
+    font-family: var(--ff-cond);
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid rgba(109,201,78,0.25);
+    border-radius: 4px;
+    color: rgba(240,245,243,0.7);
+    background: rgba(8,15,14,0.4);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .cliente-badge:hover { border-color: var(--green-accent); color: var(--text-white); }
+  .cliente-badge.featured {
+    border-color: var(--green-accent);
+    color: var(--green-accent);
+    background: rgba(109,201,78,0.06);
+    font-size: 1.05rem;
+  }
+  .cliente-badge.featured::before { content: '✈ '; }
+
+  /* ── POR QUE GHM ── */
+  #porque { background: var(--bg-black); }
+  .porque-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-top: 3rem;
+    border: 1px solid var(--border-teal);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .porque-item {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid var(--border-teal);
+    text-align: center;
+  }
+  .porque-item:last-child { border-right: none; }
+  .porque-num {
+    font-family: var(--ff-display);
+    font-size: 3.5rem;
+    color: var(--green-accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .porque-title {
+    font-family: var(--ff-cond);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-white);
+    margin-bottom: 0.5rem;
+  }
+  .porque-desc {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+  }
+
+  /* ── DEPOIMENTOS ── */
+  #depoimentos { background: var(--bg-dark); }
+  .depo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .depo-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-teal);
+    border-radius: 8px;
+    padding: 2rem;
+    position: relative;
+  }
+  .depo-quote {
+    font-family: var(--ff-display);
+    font-size: 5rem;
+    color: var(--green-accent);
+    opacity: 0.25;
+    line-height: 0.6;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+  }
+  .depo-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(240,245,243,0.85);
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .depo-author {
+    font-family: var(--ff-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+  .depo-stars {
+    color: var(--green-accent);
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.1em;
+  }
+
+  /* ── CONTATO ── */
+  #contato { background: var(--bg-black); }
+  .contato-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+  .contato-left {
+    background: var(--teal-dark);
+    border-radius: 8px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .contato-left::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='52'%3E%3Cpolygon points='30,2 58,17 58,36 30,51 2,36 2,17' fill='none' stroke='%230E6B5A' stroke-width='0.8'/%3E%3C/svg%3E");
+    background-size: 60px 52px;
+    opacity: 0.25;
+  }
+  .contato-left > * { position: relative; z-index: 1; }
+  .contact-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.8rem;
+  }
+  .contact-label {
+    font-family: var(--ff-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(109,201,78,0.7);
+    margin-bottom: 0.3rem;
+  }
+  .contact-value {
+    font-family: var(--ff-cond);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-white);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .contact-value:hover { color: var(--green-accent); }
+  .contact-value.small {
+    font-size: 0.9rem;
+    color: rgba(240,245,243,0.7);
+  }
+  .whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--green-accent);
+    color: #0A2A1A;
+    font-family: var(--ff-cond);
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 1rem 2rem;
+    border-radius: 6px;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+  }
+  .whatsapp-btn:hover { background: var(--green-dark); }
+  .contato-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .address-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-teal);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+  .address-title {
+    font-family: var(--ff-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--green-accent);
+    margin-bottom: 1rem;
+  }
+  .address-text {
+    font-family: var(--ff-cond);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-white);
+    line-height: 1.6;
+  }
+  .address-text span {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-top: 0.2rem;
+  }
+  .map-wrapper {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-teal);
+    flex: 1;
+    min-height: 240px;
+  }
+  .map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    border: none;
+    filter: grayscale(80%) invert(92%) hue-rotate(140deg) brightness(0.7);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border-teal);
+    padding: 2rem 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-logo {
+    font-family: var(--ff-display);
+    font-size: 1.8rem;
+    color: var(--green-accent);
+    letter-spacing: 0.05em;
+  }
+  .footer-copy {
+    font-family: var(--ff-mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-align: center;
+  }
+  .footer-email {
+    font-family: var(--ff-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-email:hover { color: var(--green-accent); }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9998;
+    background: var(--green-accent);
+    color: #0A2A1A;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(109,201,78,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .wa-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(109,201,78,0.5); }
+  .wa-float svg { width: 28px; height: 28px; }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links, .nav-phone { display: none; }
+    .hamburger { display: flex; }
+    .sobre-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .stats-col { flex-direction: row; flex-wrap: wrap; gap: 1.5rem; }
+    .porque-grid { grid-template-columns: 1fr 1fr; }
+    .porque-item { border-right: 1px solid var(--border-teal); border-bottom: 1px solid var(--border-teal); }
+    .depo-grid { grid-template-columns: 1fr; }
+    .contato-grid { grid-template-columns: 1fr; }
+    .equip-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .porque-grid { grid-template-columns: 1fr 1fr; }
+    h2.section-title { font-size: 2.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#hero" class="nav-logo" style="text-decoration:none;">
+    <span class="nav-logo-main">GHM</span>
+    <span class="nav-logo-sub">Comércio e Serviços</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#equipamentos">Equipamentos</a></li>
+    <li><a href="#clientes">Clientes</a></li>
+    <li><a href="#contato">Contato</a></li>
+    <li><a href="https://wa.me/5512997457723?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="nav-cta" target="_blank">WhatsApp</a></li>
+  </ul>
+  <span class="nav-phone">(12) 99745-7723</span>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="toggleMenu()">Sobre</a>
+  <a href="#servicos" onclick="toggleMenu()">Serviços</a>
+  <a href="#equipamentos" onclick="toggleMenu()">Equipamentos</a>
+  <a href="#clientes" onclick="toggleMenu()">Clientes</a>
+  <a href="#contato" onclick="toggleMenu()">Contato</a>
+  <a href="https://wa.me/5512997457723?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" style="color:var(--green-accent);">WhatsApp: (12) 99745-7723</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-hexbg"></div>
+  <svg class="hero-hex-deco" width="700" height="700" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="350,10 680,192 680,508 350,690 20,508 20,192" stroke="#6DC94E" stroke-width="1.5"/>
+    <polygon points="350,80 620,228 620,472 350,620 80,472 80,228" stroke="#6DC94E" stroke-width="0.8"/>
+    <polygon points="350,150 560,265 560,436 350,551 140,436 140,265" stroke="#6DC94E" stroke-width="0.4"/>
+  </svg>
+
+  <div class="hero-content">
+    <div class="hero-tag">Fundada em 1992 · São José dos Campos, SP</div>
+    <h1 class="hero-title">Engenharia<br>de <span>Precisão</span><br>Há + de 30 Anos</h1>
+    <p class="hero-sub">Ferramentaria · Usinagem CNC · Automação Industrial<br>Fornecedor homologado para os maiores grupos industriais do Brasil</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/5512997457723?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Solicite um Orçamento
+      </a>
+      <a href="#servicos" class="btn-ghost">Nossos Serviços</a>
+    </div>
+  </div>
+
+  <div class="trust-bar">
+    <div class="marquee-track">
+      <span class="trust-item highlight">✈ EMBRAER</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">SAINT-GOBAIN</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">PILKINGTON NSG</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">AGC</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">KAUTEX · TEXTRON</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">SUN VISOR BRASIL</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">FANAVID</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">TECPLAS</span>
+      <span class="trust-sep">·</span>
+      <!-- duplicate for seamless loop -->
+      <span class="trust-item highlight">✈ EMBRAER</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">SAINT-GOBAIN</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">PILKINGTON NSG</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">AGC</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">KAUTEX · TEXTRON</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">SUN VISOR BRASIL</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">FANAVID</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-item">TECPLAS</span>
+      <span class="trust-sep">·</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-label fade-up">Sobre Nós</div>
+  <h2 class="section-title fade-up">Tradição &<br><span>Excelência</span></h2>
+  <div class="sobre-grid fade-up">
+    <div class="stats-col">
+      <div class="stat-block">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Anos de Experiência Técnica</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">8+</div>
+        <div class="stat-label">Grandes Clientes Atendidos</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">4.5★</div>
+        <div class="stat-label">Avaliação Google</div>
+      </div>
+    </div>
+    <div class="sobre-text">
+      <div class="fundada-tag">Fundada em 1992 · CNPJ ativo · São José dos Campos</div>
+      <p>A GHM foi fundada em <strong>1992</strong> como consultoria industrial e a partir de <strong>1994</strong> ampliou seu ramo de atuação para ferramentaria, usinagem CNC e convencional, modelação e caldeiraria.</p>
+      <p>Possui equipe treinada com elevado nível de qualificação técnica e experiência, com condições para apresentar <strong>propostas atrativas</strong> em todo seu escopo, disponibilidade, prazo e nível de competência.</p>
+      <p>Localizada no polo industrial de <strong>São José dos Campos – SP</strong>, referência nacional nos setores aeroespacial e automotivo.</p>
+      <a href="https://wa.me/5512997457723?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="btn-primary" style="margin-top:1rem;display:inline-flex;">Fale Conosco</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="section-label fade-up">O Que Fazemos</div>
+  <h2 class="section-title fade-up">Nossos<br><span>Serviços</span></h2>
+  <div class="services-grid fade-up">
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="4" y="20" width="36" height="4" rx="2" fill="#6DC94E" opacity="0.3"/>
+        <rect x="18" y="4" width="8" height="36" rx="2" fill="#6DC94E" opacity="0.3"/>
+        <circle cx="22" cy="22" r="6" stroke="#6DC94E" stroke-width="1.5"/>
+        <circle cx="22" cy="22" r="2" fill="#6DC94E"/>
+      </svg>
+      <div class="service-name">Ferramentaria</div>
+      <div class="service-desc">Fabricação de ferramentas, moldes, gabaritos e dispositivos de precisão sob medida para o setor industrial.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="12" width="32" height="20" rx="3" stroke="#6DC94E" stroke-width="1.5"/>
+        <rect x="12" y="17" width="20" height="10" rx="1" fill="#6DC94E" opacity="0.2"/>
+        <line x1="14" y1="22" x2="30" y2="22" stroke="#6DC94E" stroke-width="1.5"/>
+        <circle cx="22" cy="22" r="3" fill="#6DC94E"/>
+      </svg>
+      <div class="service-name">Usinagem CNC & Convencional</div>
+      <div class="service-desc">Usinagem de precisão em Alumínio, Aço, MDF, Isopor, Acrílico e outros materiais. CNC e convencional.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="22,4 40,14 40,30 22,40 4,30 4,14" stroke="#6DC94E" stroke-width="1.5" fill="none"/>
+        <line x1="4" y1="14" x2="40" y2="30" stroke="#6DC94E" stroke-width="0.8" opacity="0.4"/>
+        <line x1="4" y1="30" x2="40" y2="14" stroke="#6DC94E" stroke-width="0.8" opacity="0.4"/>
+        <circle cx="22" cy="22" r="4" stroke="#6DC94E" stroke-width="1.5"/>
+      </svg>
+      <div class="service-name">Dispositivos GD&T</div>
+      <div class="service-desc">Dispositivos de verificação e controle dimensional com tolerâncias geométricas (GD&T) para qualidade de produção.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 36 L22 8 L36 36" stroke="#6DC94E" stroke-width="1.5" fill="none"/>
+        <line x1="12" y1="28" x2="32" y2="28" stroke="#6DC94E" stroke-width="1.5"/>
+        <circle cx="22" cy="8" r="3" fill="#6DC94E" opacity="0.6"/>
+      </svg>
+      <div class="service-name">Caldeiraria & Solda</div>
+      <div class="service-desc">Estruturas metálicas, solda TIG e MIG/MAG, cabine de pintura e acabamentos para projetos de médio e grande porte.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="6" width="14" height="14" rx="2" stroke="#6DC94E" stroke-width="1.5"/>
+        <rect x="24" y="6" width="14" height="14" rx="2" stroke="#6DC94E" stroke-width="1.5" opacity="0.5"/>
+        <rect x="6" y="24" width="14" height="14" rx="2" stroke="#6DC94E" stroke-width="1.5" opacity="0.5"/>
+        <rect x="24" y="24" width="14" height="14" rx="2" stroke="#6DC94E" stroke-width="1.5" fill="#6DC94E" opacity="0.15"/>
+      </svg>
+      <div class="service-name">Projetos 2D e 3D</div>
+      <div class="service-desc">Desenvolvimento de projetos técnicos em CAD/CAM, modelagem e engenharia reversa para fabricação industrial.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="14" stroke="#6DC94E" stroke-width="1.5"/>
+        <circle cx="22" cy="22" r="6" fill="#6DC94E" opacity="0.2"/>
+        <line x1="22" y1="8" x2="22" y2="16" stroke="#6DC94E" stroke-width="2"/>
+        <line x1="22" y1="28" x2="22" y2="36" stroke="#6DC94E" stroke-width="2"/>
+        <line x1="8" y1="22" x2="16" y2="22" stroke="#6DC94E" stroke-width="2"/>
+        <line x1="28" y1="22" x2="36" y2="22" stroke="#6DC94E" stroke-width="2"/>
+      </svg>
+      <div class="service-name">Máquinas Eletropneumáticas</div>
+      <div class="service-desc">Desenvolvimento de máquinas especiais, automação eletropneumática e sistemas customizados para linha de produção.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="22" cy="30" rx="14" ry="8" stroke="#6DC94E" stroke-width="1.5"/>
+        <path d="M8 30 Q8 14 22 10 Q36 14 36 30" stroke="#6DC94E" stroke-width="1.5" fill="none"/>
+        <circle cx="22" cy="10" r="3" fill="#6DC94E" opacity="0.6"/>
+      </svg>
+      <div class="service-name">Modelação</div>
+      <div class="service-desc">Modelação industrial com estufa própria para cura e acabamento de protótipos e modelos de referência.</div>
+    </div>
+
+    <div class="service-card">
+      <svg class="service-icon" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 34 L10 10 L20 20 L30 10 L34 34" stroke="#6DC94E" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+        <circle cx="10" cy="34" r="3" stroke="#6DC94E" stroke-width="1.5"/>
+        <circle cx="34" cy="34" r="3" stroke="#6DC94E" stroke-width="1.5"/>
+        <circle cx="20" cy="20" r="2" fill="#6DC94E"/>
+      </svg>
+      <div class="service-name">Medição Tridimensional</div>
+      <div class="service-desc">Inspeção dimensional com braço tridimensional CMM para verificação de tolerâncias críticas e relatórios de qualidade.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EQUIPAMENTOS -->
+<section id="equipamentos">
+  <div class="equip-deco">30+</div>
+  <div class="section-label fade-up">Infraestrutura</div>
+  <h2 class="section-title fade-up">Parque de<br><span>Máquinas</span></h2>
+  <div class="equip-grid fade-up">
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Fresadoras CNC</strong>NARDINI PETRUS 90250R — X2500 / Y890 / Z700</div>
+    </div>
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Ferramenteiras</strong>KAO 1500 — X1500 / Y780 / Z650</div>
+    </div>
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Tornos Convencionais</strong>Múltiplos cursos disponíveis</div>
+    </div>
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Solda TIG</strong>Alta precisão para aços inox e alumínio</div>
+    </div>
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Solda MIG / MAG</strong>Estruturas de médio e grande porte</div>
+    </div>
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Serras de Fita</strong>Corte de precisão em múltiplos materiais</div>
+    </div>
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Cabine de Pintura</strong>Acabamento superficial controlado</div>
+    </div>
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Desempeno</strong>Planeza e referência de superfície</div>
+    </div>
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Estufa para Modelação</strong>Cura controlada de temperatura</div>
+    </div>
+    <div class="equip-item">
+      <div class="equip-dot"></div>
+      <div class="equip-name"><strong>Braço Tridimensional CMM</strong>Medição dimensional de alta precisão</div>
+    </div>
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section id="clientes">
+  <div class="section-label fade-up" style="position:relative;z-index:1;">Nossos Clientes</div>
+  <h2 class="section-title fade-up" style="position:relative;z-index:1;">Empresas que<br><span>Confiam</span> na GHM</h2>
+  <div class="clientes-grid fade-up">
+    <span class="cliente-badge featured">EMBRAER</span>
+    <span class="cliente-badge">SAINT-GOBAIN</span>
+    <span class="cliente-badge">PILKINGTON · NSG GROUP</span>
+    <span class="cliente-badge">AGC</span>
+    <span class="cliente-badge">KAUTEX · TEXTRON</span>
+    <span class="cliente-badge">SUN VISOR BRASIL</span>
+    <span class="cliente-badge">FANAVID</span>
+    <span class="cliente-badge">TECPLAS</span>
+  </div>
+</section>
+
+<!-- POR QUE GHM -->
+<section id="porque">
+  <div class="section-label fade-up">Diferenciais</div>
+  <h2 class="section-title fade-up">Por Que<br><span>Escolher</span> a GHM</h2>
+  <div class="porque-grid fade-up">
+    <div class="porque-item">
+      <span class="porque-num">30+</span>
+      <div class="porque-title">Precisão</div>
+      <div class="porque-desc">Tolerâncias críticas para setores aeroespacial e automotivo com qualidade certificada.</div>
+    </div>
+    <div class="porque-item">
+      <span class="porque-num">100%</span>
+      <div class="porque-title">Compromisso</div>
+      <div class="porque-desc">Equipe disponível para demandas urgentes com prazo e escopo sempre cumpridos.</div>
+    </div>
+    <div class="porque-item">
+      <span class="porque-num">8+</span>
+      <div class="porque-title">Expertise</div>
+      <div class="porque-desc">Projetos 2D/3D, GD&T, automação e caldeiraria — solução completa sob um mesmo teto.</div>
+    </div>
+    <div class="porque-item">
+      <span class="porque-num">SJC</span>
+      <div class="porque-title">Localização</div>
+      <div class="porque-desc">No polo industrial de São José dos Campos, próximo a Embraer e aos maiores grupos industriais.</div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="section-label fade-up">O Que Dizem</div>
+  <h2 class="section-title fade-up"><span>Avaliações</span><br>Google</h2>
+  <div class="depo-grid fade-up">
+    <div class="depo-card">
+      <div class="depo-quote">"</div>
+      <div class="depo-stars">★★★★★</div>
+      <div class="depo-text">Ótimo atendimento, serviço de qualidade. Recomendo sem hesitar para quem busca precisão e profissionalismo.</div>
+      <div class="depo-author">Josué David Machado · Local Guide · via Google Reviews</div>
+    </div>
+    <div class="depo-card">
+      <div class="depo-quote">"</div>
+      <div class="depo-stars">★★★★★</div>
+      <div class="depo-text">Ótima empresa, com funcionários muito prestativos. Atendimento diferenciado do início ao fim do projeto.</div>
+      <div class="depo-author">Marco Campos · Local Guide · via Google Reviews</div>
+    </div>
+    <div class="depo-card">
+      <div class="depo-quote">"</div>
+      <div class="depo-stars">★★★★★</div>
+      <div class="depo-text">Fácil acesso e localização estratégica no polo industrial de São José dos Campos. Empresa séria e competente.</div>
+      <div class="depo-author">Percílio Jesus · Local Guide · via Google Reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-label fade-up">Fale Conosco</div>
+  <h2 class="section-title fade-up">Solicite<br>um <span>Orçamento</span></h2>
+  <div class="contato-grid fade-up">
+    <div class="contato-left">
+      <div class="contact-item">
+        <span class="contact-label">WhatsApp</span>
+        <a href="https://wa.me/5512997457723?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." class="contact-value" target="_blank">(12) 99745-7723</a>
+        <span style="font-size:0.8rem;color:var(--text-muted);margin-top:0.2rem;">Jair Coletta · Fernando Coletta</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">E-mail Comercial</span>
+        <a href="mailto:contato@ghm.ind.br" class="contact-value small">contato@ghm.ind.br</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-label">E-mail Financeiro</span>
+        <a href="mailto:financeiro@ghm.ind.br" class="contact-value small">financeiro@ghm.ind.br</a>
+      </div>
+      <a href="https://wa.me/5512997457723?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="whatsapp-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Conversar no WhatsApp
+      </a>
+    </div>
+
+    <div class="contato-right">
+      <div class="address-card">
+        <div class="address-title">Localização</div>
+        <div class="address-text">
+          Estr. Mun. Glaudistom Pereira de Oliveira, nº 3200/4000
+          <span>Bairro Putim · São José dos Campos – SP</span>
+          <span>CEP: 12.228-010</span>
+        </div>
+      </div>
+      <div class="map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3666.7!2d-45.8!3d-23.2!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4d0c8bcd3b4d%3A0xe60ab2b1de527b9!2sGHM%20Com%C3%A9rcio%20e%20Servi%C3%A7os!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Localização GHM Comércio e Serviços">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">GHM</span>
+  <span class="footer-copy">© 2024 GHM Comércio e Serviços LTDA · CNPJ registrado · São José dos Campos – SP</span>
+  <a href="mailto:contato@ghm.ind.br" class="footer-email">contato@ghm.ind.br</a>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5512997457723?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento." target="_blank" class="wa-float" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#0A2A1A" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('open');
+    });
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 120);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
